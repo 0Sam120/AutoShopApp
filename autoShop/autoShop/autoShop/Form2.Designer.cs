@@ -122,6 +122,7 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.InitialImage = global::autoShop.Properties.Resources.glazik;
             this.pictureBox1.Location = new System.Drawing.Point(255, 37);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(28, 20);

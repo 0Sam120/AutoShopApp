@@ -17,6 +17,7 @@ namespace autoShop
         public Form2()
         {
             InitializeComponent();
+            pictureBox1.Image = pictureBox1.InitialImage;
 
         }
 
@@ -105,13 +106,13 @@ namespace autoShop
         {
             if (hidden == false)
             {
-                pictureBox1.Image = Image.FromFile("C:\\Users\\admin\\Downloads\\Учебная практика\\autoShop\\autoShop\\images\\glazik.png");
+                pictureBox1.Image = Properties.Resources.glazik;
                 textBox2.PasswordChar = '*';
                 hidden = true;
             }
             else
             {
-                pictureBox1.Image = Image.FromFile("C:\\Users\\admin\\Downloads\\Учебная практика\\autoShop\\autoShop\\images\\glazik_zakryt.png");
+                pictureBox1.Image = Properties.Resources.glazik_zakryt;
                 textBox2.PasswordChar = '\0';
                 hidden = false;
             }

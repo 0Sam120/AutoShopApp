@@ -23,67 +23,8 @@ namespace autoShop
             dataGridView1.Visible = false;
             CurrentUser = currentUser;
 
-            SqlConnection sqlConnect = new SqlConnection("Data Source=localhost;Initial Catalog = autoShop; Integrated Security = True");
-
-            try
-            {
-                sqlConnect.Open();
-                SqlCommand da = new SqlCommand("select * from Клиент where UserID = @login", sqlConnect);
-                da.Parameters.AddWithValue("@login", CurrentUser.UserID);
-                try
-                {
-                    using (SqlDataReader reader = da.ExecuteReader())
-                    {
-                        if (reader.Read())
-                        {
-                            string lastName = reader["LastName"].ToString();
-                            string name = reader["Name"].ToString();
-                            string patronimic = reader["Patronimic"].ToString();
-                            string phone = reader["Phone"].ToString();
-                            string sign = reader["Sign"].ToString();
-                            string bank = reader["Bank"].ToString();
-                            string account = reader["Account"].ToString();
-
-                            // Отображение изображения на форме
-                            textBox1.Text = lastName;
-                            textBox2.Text = name;
-                            textBox3.Text = patronimic;
-                            textBox4.Text = ("+7" + phone);
-                            textBox5.Text = bank;
-                            textBox6.Text = account;
-                            if(sign == "1")
-                            {
-                                textBox7.Text = "Физическое Лицо";
-                            }
-                            else
-                            {
-                                textBox7.Text = "Юридическое Лицо";
-                            }
-                            reader.Close();
-
-                            SqlCommand dataAdapterCommand = new SqlCommand("select * from Клиент where UserID = @login", sqlConnect);
-                            dataAdapterCommand.Parameters.AddWithValue("@login", CurrentUser.UserID);
-
-                            SqlDataAdapter adapter = new SqlDataAdapter(dataAdapterCommand);
-                            DataTable dataTable = new DataTable();
-
-                            // Заполняем таблицу данными из базы данных
-                            adapter.Fill(dataTable);
-
-                            // Связываем DataTable с DataGridView
-                            dataGridView1.DataSource = dataTable;
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Ошибка: " + ex.Message);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Опибка при входе: " + ex.Message);
-            }
+            LoadUserData();
+            LoadDataGridViewData();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -133,25 +74,112 @@ namespace autoShop
 
         private void ЛичныйКабинет_Load(object sender, EventArgs e)
         {
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "autoShopDataSet.Клиент". При необходимости она может быть перемещена или удалена.
-            this.клиентTableAdapter.Fill(this.autoShopDataSet.Клиент);
-
+            
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            try
+            using (SqlConnection sqlConnect = new SqlConnection("Data Source=localhost;Initial Catalog=autoShop;Integrated Security=True"))
             {
-                Validate();
-                клиентBindingSource.EndEdit();
-                клиентTableAdapter.Update(autoShopDataSet);
-                autoShopDataSet.AcceptChanges();
-                MessageBox.Show("Данные успешно обновлены");
+                try
+                {
+                    sqlConnect.Open();
+                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM Клиент WHERE UserID = @login", sqlConnect);
+
+                    // Добавляем параметр к командам
+                    adapter.UpdateCommand = new SqlCommand("UPDATE Клиент SET LastName = @LastName, Name = @Name, Patronimic = @Patronimic, Phone = @Phone, Bank = @Bank, Account = @Account WHERE UserID = @login", sqlConnect);
+                    adapter.UpdateCommand.Parameters.AddWithValue("@login", CurrentUser.UserID);
+                    adapter.UpdateCommand.Parameters.Add("@LastName", SqlDbType.NVarChar, 50, "LastName");
+                    adapter.UpdateCommand.Parameters.Add("@Name", SqlDbType.NVarChar, 50, "Name");
+                    adapter.UpdateCommand.Parameters.Add("@Patronimic", SqlDbType.NVarChar, 50, "Patronimic");
+                    adapter.UpdateCommand.Parameters.Add("@Phone", SqlDbType.NVarChar, 50, "Phone");
+                    adapter.UpdateCommand.Parameters.Add("@Bank", SqlDbType.NVarChar, 50, "Bank");
+                    adapter.UpdateCommand.Parameters.Add("@Account", SqlDbType.NVarChar, 50, "Account");
+
+                    adapter.InsertCommand = new SqlCommand("INSERT INTO Клиент (UserID, LastName, Name, Patronimic, Phone, Bank, Account) VALUES (@login, @LastName, @Name, @Patronimic, @Phone, @Bank, @Account)", sqlConnect);
+                    adapter.InsertCommand.Parameters.AddWithValue("@login", CurrentUser.UserID);
+                    adapter.InsertCommand.Parameters.Add("@LastName", SqlDbType.NVarChar, 50, "LastName");
+                    adapter.InsertCommand.Parameters.Add("@Name", SqlDbType.NVarChar, 50, "Name");
+                    adapter.InsertCommand.Parameters.Add("@Patronimic", SqlDbType.NVarChar, 50, "Patronimic");
+                    adapter.InsertCommand.Parameters.Add("@Phone", SqlDbType.NVarChar, 50, "Phone");
+                    adapter.InsertCommand.Parameters.Add("@Bank", SqlDbType.NVarChar, 50, "Bank");
+                    adapter.InsertCommand.Parameters.Add("@Account", SqlDbType.NVarChar, 50, "Account");
+
+                    adapter.DeleteCommand = new SqlCommand("DELETE FROM Клиент WHERE UserID = @login", sqlConnect);
+                    adapter.DeleteCommand.Parameters.AddWithValue("@login", CurrentUser.UserID);
+
+                    // Применяем изменения
+                    adapter.Update((DataTable)dataGridView1.DataSource);
+
+                    MessageBox.Show("Данные успешно обновлены");
+                    МенюПокупателя brForm = new МенюПокупателя(CurrentUser);
+                    brForm.Show();
+                    this.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Не удалось обновить данные: " + ex.ToString());
+                }
             }
-            catch (SystemException ex)
+        }
+
+        private void LoadUserData()
+        {
+            using (SqlConnection sqlConnect = new SqlConnection("Data Source=localhost;Initial Catalog=autoShop;Integrated Security=True"))
             {
-                MessageBox.Show("Не удалось обновить данные" + ex.ToString());
-                return;
+                try
+                {
+                    sqlConnect.Open();
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM Клиент WHERE UserID = @login", sqlConnect);
+                    cmd.Parameters.AddWithValue("@login", CurrentUser.UserID);
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            textBox1.Text = reader["LastName"].ToString();
+                            textBox2.Text = reader["Name"].ToString();
+                            textBox3.Text = reader["Patronimic"].ToString();
+                            textBox4.Text = "+7" + reader["Phone"].ToString();
+                            textBox5.Text = reader["Bank"].ToString();
+                            textBox6.Text = reader["Account"].ToString();
+
+                            string sign = reader["Sign"].ToString();
+                            textBox7.Text = (sign == "1") ? "Физическое Лицо" : "Юридическое Лицо";
+
+                            reader.Close();
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ошибка: " + ex.Message);
+                }
+            }
+        }
+
+        private void LoadDataGridViewData()
+        {
+            using (SqlConnection sqlConnect = new SqlConnection("Data Source=localhost;Initial Catalog=autoShop;Integrated Security=True"))
+            {
+                try
+                {
+                    sqlConnect.Open();
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM Клиент WHERE UserID = @login", sqlConnect);
+                    cmd.Parameters.AddWithValue("@login", CurrentUser.UserID);
+
+                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                    DataTable dataTable = new DataTable();
+
+                    adapter.Fill(dataTable);
+
+                    // Привязываем данные к DataGridView
+                    dataGridView1.DataSource = dataTable;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ошибка: " + ex.Message);
+                }
             }
         }
     }

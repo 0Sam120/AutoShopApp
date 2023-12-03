@@ -57,6 +57,11 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="RegisteredUser.cs" />
     <Compile Include="test.cs">
       <SubType>Form</SubType>
@@ -143,13 +148,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="МенюПокупателя.resx">
       <DependentUpon>МенюПокупателя.cs</DependentUpon>
     </EmbeddedResource>
@@ -176,6 +177,60 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\glazik.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\glazik_zakryt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\audi.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\ford focus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\granta.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\honda civic.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\mercedez benz.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\nissan.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\niva legend.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\niva travel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\toyota camri.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\vesta.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\ford_focus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\honda_civic.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\mercedez_benz.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\niva_legend.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\niva_travel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\toyota_camri.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

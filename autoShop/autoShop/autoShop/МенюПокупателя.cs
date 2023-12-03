@@ -38,5 +38,12 @@ namespace autoShop
             profile.Show();
             this.Close();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ОформлениеЗаказа createOrder = new ОформлениеЗаказа(currentUser);
+            createOrder.Show();
+            this.Close();
+        }
     }
 }
