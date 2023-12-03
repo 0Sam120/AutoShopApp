@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -36,6 +37,7 @@
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.textBox7 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -45,16 +47,34 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.autoShopDataSet = new autoShop.autoShopDataSet();
+            this.клиентBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.клиентTableAdapter = new autoShop.autoShopDataSetTableAdapters.КлиентTableAdapter();
+            this.clientIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.patronimicDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.signDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.bankDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.accountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.phoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.userIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.autoShopDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.клиентBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(241, 161);
+            this.button2.Location = new System.Drawing.Point(241, 177);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(197, 40);
+            this.button2.Size = new System.Drawing.Size(197, 24);
             this.button2.TabIndex = 14;
             this.button2.Text = "Назад";
             this.button2.UseVisualStyleBackColor = true;
@@ -64,7 +84,7 @@
             // 
             this.button1.Location = new System.Drawing.Point(241, 118);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(197, 37);
+            this.button1.Size = new System.Drawing.Size(197, 23);
             this.button1.TabIndex = 13;
             this.button1.Text = "Заказы";
             this.button1.UseVisualStyleBackColor = true;
@@ -135,6 +155,14 @@
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Контактные данные";
+            // 
+            // textBox7
+            // 
+            this.textBox7.Location = new System.Drawing.Point(74, 142);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.ReadOnly = true;
+            this.textBox7.Size = new System.Drawing.Size(121, 20);
+            this.textBox7.TabIndex = 10;
             // 
             // label5
             // 
@@ -213,20 +241,140 @@
             this.textBox1.Size = new System.Drawing.Size(121, 20);
             this.textBox1.TabIndex = 0;
             // 
-            // textBox7
+            // button3
             // 
-            this.textBox7.Location = new System.Drawing.Point(74, 142);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.ReadOnly = true;
-            this.textBox7.Size = new System.Drawing.Size(121, 20);
-            this.textBox7.TabIndex = 10;
+            this.button3.Location = new System.Drawing.Point(242, 148);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(196, 23);
+            this.button3.TabIndex = 15;
+            this.button3.Text = "Изменить данные";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(461, 148);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(196, 23);
+            this.button4.TabIndex = 16;
+            this.button4.Text = "Подтвердить изменения";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(460, 177);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(197, 24);
+            this.button5.TabIndex = 17;
+            this.button5.Text = "Отменить изменения";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.clientIDDataGridViewTextBoxColumn,
+            this.nameDataGridViewTextBoxColumn,
+            this.lastNameDataGridViewTextBoxColumn,
+            this.patronimicDataGridViewTextBoxColumn,
+            this.signDataGridViewCheckBoxColumn,
+            this.bankDataGridViewTextBoxColumn,
+            this.accountDataGridViewTextBoxColumn,
+            this.phoneDataGridViewTextBoxColumn,
+            this.userIDDataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.клиентBindingSource;
+            this.dataGridView1.Location = new System.Drawing.Point(12, 13);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(645, 134);
+            this.dataGridView1.TabIndex = 18;
+            // 
+            // autoShopDataSet
+            // 
+            this.autoShopDataSet.DataSetName = "autoShopDataSet";
+            this.autoShopDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // клиентBindingSource
+            // 
+            this.клиентBindingSource.DataMember = "Клиент";
+            this.клиентBindingSource.DataSource = this.autoShopDataSet;
+            // 
+            // клиентTableAdapter
+            // 
+            this.клиентTableAdapter.ClearBeforeFill = true;
+            // 
+            // clientIDDataGridViewTextBoxColumn
+            // 
+            this.clientIDDataGridViewTextBoxColumn.DataPropertyName = "ClientID";
+            this.clientIDDataGridViewTextBoxColumn.HeaderText = "ClientID";
+            this.clientIDDataGridViewTextBoxColumn.Name = "clientIDDataGridViewTextBoxColumn";
+            this.clientIDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.clientIDDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            // 
+            // lastNameDataGridViewTextBoxColumn
+            // 
+            this.lastNameDataGridViewTextBoxColumn.DataPropertyName = "LastName";
+            this.lastNameDataGridViewTextBoxColumn.HeaderText = "LastName";
+            this.lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
+            // 
+            // patronimicDataGridViewTextBoxColumn
+            // 
+            this.patronimicDataGridViewTextBoxColumn.DataPropertyName = "Patronimic";
+            this.patronimicDataGridViewTextBoxColumn.HeaderText = "Patronimic";
+            this.patronimicDataGridViewTextBoxColumn.Name = "patronimicDataGridViewTextBoxColumn";
+            // 
+            // signDataGridViewCheckBoxColumn
+            // 
+            this.signDataGridViewCheckBoxColumn.DataPropertyName = "Sign";
+            this.signDataGridViewCheckBoxColumn.HeaderText = "Sign";
+            this.signDataGridViewCheckBoxColumn.Name = "signDataGridViewCheckBoxColumn";
+            this.signDataGridViewCheckBoxColumn.Visible = false;
+            // 
+            // bankDataGridViewTextBoxColumn
+            // 
+            this.bankDataGridViewTextBoxColumn.DataPropertyName = "Bank";
+            this.bankDataGridViewTextBoxColumn.HeaderText = "Bank";
+            this.bankDataGridViewTextBoxColumn.Name = "bankDataGridViewTextBoxColumn";
+            // 
+            // accountDataGridViewTextBoxColumn
+            // 
+            this.accountDataGridViewTextBoxColumn.DataPropertyName = "Account";
+            this.accountDataGridViewTextBoxColumn.HeaderText = "Account";
+            this.accountDataGridViewTextBoxColumn.Name = "accountDataGridViewTextBoxColumn";
+            // 
+            // phoneDataGridViewTextBoxColumn
+            // 
+            this.phoneDataGridViewTextBoxColumn.DataPropertyName = "Phone";
+            this.phoneDataGridViewTextBoxColumn.HeaderText = "Phone";
+            this.phoneDataGridViewTextBoxColumn.Name = "phoneDataGridViewTextBoxColumn";
+            // 
+            // userIDDataGridViewTextBoxColumn
+            // 
+            this.userIDDataGridViewTextBoxColumn.DataPropertyName = "UserID";
+            this.userIDDataGridViewTextBoxColumn.HeaderText = "UserID";
+            this.userIDDataGridViewTextBoxColumn.Name = "userIDDataGridViewTextBoxColumn";
+            this.userIDDataGridViewTextBoxColumn.Visible = false;
             // 
             // ЛичныйКабинет
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkGray;
-            this.ClientSize = new System.Drawing.Size(448, 213);
+            this.ClientSize = new System.Drawing.Size(444, 213);
+            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.button5);
+            this.Controls.Add(this.button4);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox2);
@@ -234,10 +382,14 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ЛичныйКабинет";
             this.Text = "ЛичныйКабинет";
+            this.Load += new System.EventHandler(this.ЛичныйКабинет_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.autoShopDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.клиентBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -261,5 +413,21 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private autoShopDataSet autoShopDataSet;
+        private System.Windows.Forms.BindingSource клиентBindingSource;
+        private autoShopDataSetTableAdapters.КлиентTableAdapter клиентTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clientIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lastNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn patronimicDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn signDataGridViewCheckBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn bankDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn accountDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn phoneDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn userIDDataGridViewTextBoxColumn;
     }
 }

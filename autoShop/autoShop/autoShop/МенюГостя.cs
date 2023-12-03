@@ -12,9 +12,12 @@ namespace autoShop
 {
     public partial class МенюГостя : Form
     {
-        public МенюГостя()
+        RegisteredUser currentUser;
+        public МенюГостя(RegisteredUser user)
         {
             InitializeComponent();
+            currentUser = user;
+            label1.Text = currentUser.UserName;
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -29,16 +32,9 @@ namespace autoShop
             Application.Exit();
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            Заказы orders = new Заказы();
-            orders.Show();
-            this.Close();
-        }
-
         private void button5_Click(object sender, EventArgs e)
         {
-            ДобавлениеКлиента client = new ДобавлениеКлиента();
+            ДобавлениеКлиента client = new ДобавлениеКлиента(currentUser);
             client.Show();
             this.Close();
         }
@@ -46,6 +42,11 @@ namespace autoShop
         private void button6_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

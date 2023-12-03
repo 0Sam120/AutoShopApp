@@ -13,14 +13,10 @@ namespace autoShop
 {
     public partial class Form2 : Form
     {
+        
         public Form2()
         {
             InitializeComponent();
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
 
         }
 
@@ -63,6 +59,7 @@ namespace autoShop
                 {
                     string dbPassword = dt.Rows[0]["Password"].ToString();
                     string role = dt.Rows[0]["Access"].ToString();
+                    RegisteredUser currentUser = userLog(login);
                     if (password == dbPassword)
                     {
                         switch (role)
@@ -74,18 +71,12 @@ namespace autoShop
                                 MessageBox.Show("Произведён вход как пользователь");
                                 break;
                             case "buyer":
-                                userLog(login);
-                                МенюПокупателя brForm = new МенюПокупателя(registeredUser);
+                                МенюПокупателя brForm = new МенюПокупателя(currentUser);
                                 brForm.Show();
                                 this.Hide();
                                 break;
                             case "guest":
-<<<<<<< HEAD
-                                МенюГостя gstForm = new МенюГостя();
-=======
-                                МенюГостя gstForm = new МенюГостя(registeredUser);
-                                userLog(login);
->>>>>>> Finished up the guest form, and moved onto buyer form
+                                МенюГостя gstForm = new МенюГостя(currentUser);
                                 gstForm.Show();
                                 this.Hide();
                                 break;
@@ -136,6 +127,46 @@ namespace autoShop
         private void button6_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private RegisteredUser userLog(string login)
+        {
+            RegisteredUser currentUser = new RegisteredUser();
+            using (SqlConnection connection = new SqlConnection("Data Source=localhost;Initial Catalog = autoShop; Integrated Security = True"))
+            {
+                try
+                {
+                    // Открываем соединение
+                    connection.Open();
+
+                    string selectQuery = "SELECT UserID FROM Users WHERE Login = @EnteredLogin";
+                    using (SqlCommand command = new SqlCommand(selectQuery, connection))
+                    {
+                        // Задаем параметр для безопасного использования в запросе
+                        command.Parameters.AddWithValue("@EnteredLogin", login);
+
+                        // Выполняем запрос и получаем результат
+                        object result = command.ExecuteScalar();
+
+                        // Проверяем, был ли найден UserID
+                        if (result != null)
+                        {
+                            currentUser.UserID = Convert.ToInt32(result);
+                            currentUser.UserName = login;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Пользователь с таким логином не найден.");
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Ошибка при выполнении запроса: " + ex.Message);
+                }
+            }
+
+            return currentUser;
         }
     }
 }

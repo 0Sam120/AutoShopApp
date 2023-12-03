@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,34 +13,45 @@ namespace autoShop
 {
     public partial class Заказы : Form
     {
-<<<<<<< HEAD
-        public Заказы()
-=======
-        private RegisteredUser currentUser;
-        public Заказы(RegisteredUser registeredUser)
->>>>>>> Finished up the guest form, and moved onto buyer form
+        RegisteredUser currentUser;
+        public Заказы(RegisteredUser user)
         {
             InitializeComponent();
-            currentUser = registeredUser;
+            currentUser = user;
+
+            SqlConnection sqlConnect = new SqlConnection("Data Source=localhost;Initial Catalog = autoShop; Integrated Security = True");
+
+            try
+            {
+                sqlConnect.Open();
+                SqlCommand da = new SqlCommand("select * from Orders where UserID = @login", sqlConnect);
+                da.Parameters.AddWithValue("@login", currentUser.UserID);
+                // Создаем адаптер данных и таблицу для хранения результатов запроса
+                SqlDataAdapter adapter = new SqlDataAdapter(da);
+                DataTable dataTable = new DataTable();
+
+                // Заполняем таблицу данными из базы данных
+                adapter.Fill(dataTable);
+
+                // Связываем DataTable с DataGridView
+                dataGridView1.DataSource = dataTable;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Опибка при входе: " + ex.Message);
+            }
         }
 
-        private void Form5_Load(object sender, EventArgs e)
+        private void Заказы_Load(object sender, EventArgs e)
         {
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "autoShopDataSet.Orders". При необходимости она может быть перемещена или удалена.
-            this.ordersTableAdapter.Fill(this.autoShopDataSet.Orders);
-
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            МенюГостя usrForm = new МенюГостя();
-            usrForm.Show();
+            ЛичныйКабинет profile = new ЛичныйКабинет(currentUser);
+            profile.Show();
             this.Close();
-        }
-
-        private void button6_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
         }
     }
 }

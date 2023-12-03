@@ -16,7 +16,7 @@ namespace autoShop
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ОформлениеЗаказа());
+            Application.Run(new Form2());
         }
     }
 }

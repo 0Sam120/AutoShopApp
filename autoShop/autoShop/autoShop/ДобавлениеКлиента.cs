@@ -13,9 +13,27 @@ namespace autoShop
 {
     public partial class ДобавлениеКлиента : Form
     {
-        public ДобавлениеКлиента()
+        RegisteredUser currentUser;
+        public ДобавлениеКлиента(RegisteredUser user)
         {
             InitializeComponent();
+            currentUser = user;
+            SqlConnection sqlConnect = new SqlConnection("Data Source=localhost;Initial Catalog = autoShop; Integrated Security = True");
+            sqlConnect.Open();
+            SqlDataAdapter da = new SqlDataAdapter("select * from Клиент where UserID = @login", sqlConnect);
+            da.SelectCommand.Parameters.AddWithValue("@login", currentUser.UserID);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            if (dt.Rows.Count != 0)
+            {
+                groupBox1.Visible = false;
+                groupBox2.Visible = false;
+                button1.Visible = false;
+            }
+            else
+            {
+                label8.Visible = false;
+            }
         }
 
         private void Form6_Load(object sender, EventArgs e)
@@ -34,8 +52,9 @@ namespace autoShop
             string account = textBox6.Text.Trim();
 
             SqlConnection sqlConnect = new SqlConnection("Data Source=localhost;Initial Catalog = autoShop; Integrated Security = True");
+            sqlConnect.Open();
 
-            using (SqlCommand cmd = new SqlCommand("Insert Into Клиент(LastName, Name, Patronimic, Phone, Sign, Bank, Account) Values (@lastName, @name, @patronimic, @phone, @sign, @bank, @account)", sqlConnect))
+            using (SqlCommand cmd = new SqlCommand("Insert Into Клиент(LastName, Name, Patronimic, Phone, Sign, Bank, Account, UserID) Values (@lastName, @name, @patronimic, @phone, @sign, @bank, @account, @userid)", sqlConnect))
             {
                 cmd.Parameters.AddWithValue("@lastName", lastName);
                 cmd.Parameters.AddWithValue("@name", name);
@@ -47,10 +66,11 @@ namespace autoShop
                 }
                 else
                 {
-                    cmd.Parameters.AddWithValue("@sign", 2);
+                    cmd.Parameters.AddWithValue("@sign", 0);
                 }
                 cmd.Parameters.AddWithValue("@bank", bank);
                 cmd.Parameters.AddWithValue("@account", account);
+                cmd.Parameters.AddWithValue("@userid", currentUser.UserID);
 
                 try
                 {
@@ -60,6 +80,10 @@ namespace autoShop
                     {
                         // Регистрация успешно завершена
                         MessageBox.Show("Данные успешно введены");
+                        groupBox1.Visible = false;
+                        groupBox2.Visible = false;
+                        button1.Visible = false;
+                        label8.Visible = true;
                     }
                     else
                     {
@@ -77,7 +101,7 @@ namespace autoShop
 
         private void button2_Click(object sender, EventArgs e)
         {
-            МенюГостя gstForm = new МенюГостя();
+            МенюГостя gstForm = new МенюГостя(currentUser);
             gstForm.Show();
             this.Close();
         }
@@ -85,6 +109,11 @@ namespace autoShop
         private void button6_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
