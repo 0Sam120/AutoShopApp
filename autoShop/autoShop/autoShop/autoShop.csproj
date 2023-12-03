@@ -87,6 +87,18 @@
     <Compile Include="ЛичныйКабинет.Designer.cs">
       <DependentUpon>ЛичныйКабинет.cs</DependentUpon>
     </Compile>
+    <Compile Include="МенюАдмина.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="МенюАдмина.Designer.cs">
+      <DependentUpon>МенюАдмина.cs</DependentUpon>
+    </Compile>
+    <Compile Include="МенюПользователя.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="МенюПользователя.Designer.cs">
+      <DependentUpon>МенюПользователя.cs</DependentUpon>
+    </Compile>
     <Compile Include="ОформлениеЗаказа.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -133,6 +145,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ЛичныйКабинет.resx">
       <DependentUpon>ЛичныйКабинет.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="МенюАдмина.resx">
+      <DependentUpon>МенюАдмина.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="МенюПользователя.resx">
+      <DependentUpon>МенюПользователя.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ОформлениеЗаказа.resx">
       <DependentUpon>ОформлениеЗаказа.cs</DependentUpon>
