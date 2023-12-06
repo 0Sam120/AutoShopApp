@@ -66,10 +66,14 @@ namespace autoShop
                         switch (role)
                         {
                             case "admin":
-                                MessageBox.Show("Произведён вход как администратор");
+                                МенюАдмина adminForm = new МенюАдмина();
+                                adminForm.Show();
+                                this.Hide();
                                 break;
                             case "user":
-                                MessageBox.Show("Произведён вход как пользователь");
+                                МенюПользователя userForm = new МенюПользователя();
+                                userForm.Show();
+                                this.Hide();
                                 break;
                             case "buyer":
                                 МенюПокупателя brForm = new МенюПокупателя(currentUser);

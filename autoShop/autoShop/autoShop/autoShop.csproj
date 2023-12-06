@@ -69,11 +69,41 @@
     <Compile Include="test.Designer.cs">
       <DependentUpon>test.cs</DependentUpon>
     </Compile>
+    <Compile Include="АвтомобилиADM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="АвтомобилиADM.Designer.cs">
+      <DependentUpon>АвтомобилиADM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="АвтомобилиUSER.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="АвтомобилиUSER.Designer.cs">
+      <DependentUpon>АвтомобилиUSER.cs</DependentUpon>
+    </Compile>
     <Compile Include="Авторизация.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form2.Designer.cs">
       <DependentUpon>Авторизация.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ДвигателиADM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ДвигателиADM.Designer.cs">
+      <DependentUpon>ДвигателиADM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ДвигателиUSER.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ДвигателиUSER.Designer.cs">
+      <DependentUpon>ДвигателиUSER.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ДиректорскийПерсонал.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ДиректорскийПерсонал.Designer.cs">
+      <DependentUpon>ДиректорскийПерсонал.cs</DependentUpon>
     </Compile>
     <Compile Include="Заказы.cs">
       <SubType>Form</SubType>
@@ -81,11 +111,47 @@
     <Compile Include="Заказы.Designer.cs">
       <DependentUpon>Заказы.cs</DependentUpon>
     </Compile>
+    <Compile Include="КлиентUSER.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="КлиентUSER.Designer.cs">
+      <DependentUpon>КлиентUSER.cs</DependentUpon>
+    </Compile>
+    <Compile Include="КлиентыADM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="КлиентыADM.Designer.cs">
+      <DependentUpon>КлиентыADM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="КузовыADM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="КузовыADM.Designer.cs">
+      <DependentUpon>КузовыADM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="КузовыUSER.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="КузовыUSER.Designer.cs">
+      <DependentUpon>КузовыUSER.cs</DependentUpon>
+    </Compile>
     <Compile Include="ЛичныйКабинет.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ЛичныйКабинет.Designer.cs">
       <DependentUpon>ЛичныйКабинет.cs</DependentUpon>
+    </Compile>
+    <Compile Include="МаркиADM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="МаркиADM.Designer.cs">
+      <DependentUpon>МаркиADM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="МаркиUSER.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="МаркиUSER.Designer.cs">
+      <DependentUpon>МаркиUSER.cs</DependentUpon>
     </Compile>
     <Compile Include="МенюАдмина.cs">
       <SubType>Form</SubType>
@@ -104,6 +170,18 @@
     </Compile>
     <Compile Include="ОформлениеЗаказа.Designer.cs">
       <DependentUpon>ОформлениеЗаказа.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ПросмотрЗаказовADM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ПросмотрЗаказовADM.Designer.cs">
+      <DependentUpon>ПросмотрЗаказовADM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ПросмотрЗаказовUSER.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ПросмотрЗаказовUSER.Designer.cs">
+      <DependentUpon>ПросмотрЗаказовUSER.cs</DependentUpon>
     </Compile>
     <Compile Include="Регистрация.cs">
       <SubType>Form</SubType>
@@ -131,6 +209,18 @@
     <Compile Include="МенюПокупателя.Designer.cs">
       <DependentUpon>МенюПокупателя.cs</DependentUpon>
     </Compile>
+    <Compile Include="УправлениеПользователями.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="УправлениеПользователями.Designer.cs">
+      <DependentUpon>УправлениеПользователями.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Филиалы.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Филиалы.Designer.cs">
+      <DependentUpon>Филиалы.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -140,11 +230,47 @@
     <EmbeddedResource Include="test.resx">
       <DependentUpon>test.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="АвтомобилиADM.resx">
+      <DependentUpon>АвтомобилиADM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="АвтомобилиUSER.resx">
+      <DependentUpon>АвтомобилиUSER.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Авторизация.resx">
+      <DependentUpon>Авторизация.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ДвигателиADM.resx">
+      <DependentUpon>ДвигателиADM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ДвигателиUSER.resx">
+      <DependentUpon>ДвигателиUSER.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ДиректорскийПерсонал.resx">
+      <DependentUpon>ДиректорскийПерсонал.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Заказы.resx">
       <DependentUpon>Заказы.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="КлиентUSER.resx">
+      <DependentUpon>КлиентUSER.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="КлиентыADM.resx">
+      <DependentUpon>КлиентыADM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="КузовыADM.resx">
+      <DependentUpon>КузовыADM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="КузовыUSER.resx">
+      <DependentUpon>КузовыUSER.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ЛичныйКабинет.resx">
       <DependentUpon>ЛичныйКабинет.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="МаркиADM.resx">
+      <DependentUpon>МаркиADM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="МаркиUSER.resx">
+      <DependentUpon>МаркиUSER.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="МенюАдмина.resx">
       <DependentUpon>МенюАдмина.cs</DependentUpon>
@@ -154,6 +280,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ОформлениеЗаказа.resx">
       <DependentUpon>ОформлениеЗаказа.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ПросмотрЗаказовADM.resx">
+      <DependentUpon>ПросмотрЗаказовADM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ПросмотрЗаказовUSER.resx">
+      <DependentUpon>ПросмотрЗаказовUSER.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Регистрация.resx">
       <DependentUpon>Регистрация.cs</DependentUpon>
@@ -171,6 +303,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="МенюПокупателя.resx">
       <DependentUpon>МенюПокупателя.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="УправлениеПользователями.resx">
+      <DependentUpon>УправлениеПользователями.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Филиалы.resx">
+      <DependentUpon>Филиалы.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="autoShopDataSet.xsc">
       <DependentUpon>autoShopDataSet.xsd</DependentUpon>

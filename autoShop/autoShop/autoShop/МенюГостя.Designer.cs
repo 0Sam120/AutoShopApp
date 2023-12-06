@@ -33,8 +33,8 @@
             this.button4 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button5 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.button5 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -83,16 +83,6 @@
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(6, 171);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(319, 23);
-            this.button5.TabIndex = 5;
-            this.button5.Text = "Регистрация клиента";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -103,6 +93,16 @@
             this.label1.Text = "label1";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(6, 171);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(319, 23);
+            this.button5.TabIndex = 5;
+            this.button5.Text = "Регистрация клиента";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
             // МенюГостя
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -112,6 +112,7 @@
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "МенюГостя";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form4";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox1.ResumeLayout(false);

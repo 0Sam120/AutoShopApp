@@ -123,6 +123,7 @@
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "МенюПокупателя";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ФормаПокупателя";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
